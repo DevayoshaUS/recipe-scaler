@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Recipe Scaler</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<main class="wrap">
+  <h1>Recipe Scaler</h1>
+  <p class="lede">Paste a recipe's ingredient list, tell it how many servings you actually need, and get every quantity recalculated — with an optional US &rarr; metric conversion.</p>
+
+  <form id="scale-form">
+    <label for="ingredients">Ingredients (one per line)</label>
+    <textarea id="ingredients" rows="8">2 cups flour
+1 tbsp sugar
+3 eggs
+1/2 tsp salt
+1 1/2 cups milk</textarea>
+
+    <div class="row">
+      <div>
+        <label for="original-servings">Recipe makes</label>
+        <input type="number" id="original-servings" min="1" value="4" />
+      </div>
+      <div>
+        <label for="desired-servings">I need</label>
+        <input type="number" id="desired-servings" min="1" value="6" />
+      </div>
+    </div>
+
+    <label class="checkbox-row">
+      <input type="checkbox" id="convert-metric" />
+      Convert US units (cups, tbsp, tsp, oz, lb) to metric (ml, g)
+    </label>
+
+    <button type="submit">Scale it</button>
+  </form>
+
+  <h2>Scaled recipe</h2>
+  <pre id="output" aria-live="polite"></pre>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
