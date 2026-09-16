@@ -116,4 +116,21 @@ document.addEventListener("DOMContentLoaded", init);
 
 if (typeof module !== "undefined") {
   module.exports = { parseQuantity, parseLine, formatQuantity, scaleAndConvert, scaleRecipe };
+}// Copy Button Functionality
+const copyBtn = document.getElementById('copy-btn');
+const outputArea = document.getElementById('output');
+if (copyBtn && outputArea) {
+  copyBtn.addEventListener('click', () => {
+    const textToCopy = outputArea.innerText;
+    if (!textToCopy) return; 
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      const originalText = copyBtn.innerText;
+      copyBtn.innerText = 'Copied! ✅'; 
+      setTimeout(() => {
+        copyBtn.innerText = originalText;
+      }, 2000);
+    }).catch(err => {
+      console.error('Failed to copy: ', err);
+    });
+  });
 }
